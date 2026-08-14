@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Special Gift for Pookie ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+    color:white;
+    background:
+        radial-gradient(circle at top, #ff9a9e 0%, #fad0c4 35%, #8e2de2 100%);
+}
+
+/* Main screen */
+
+.page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    position:relative;
+}
+
+.card{
+    width:100%;
+    max-width:700px;
+    padding:35px 22px 55px;
+    text-align:center;
+
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:30px;
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.25);
+
+    position:relative;
+    z-index:5;
+}
+
+/* Top text */
+
+.top-title{
+    font-size:clamp(25px,6vw,42px);
+    font-weight:bold;
+    margin-bottom:10px;
+    text-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.from{
+    font-size:18px;
+    margin-bottom:28px;
+    opacity:.95;
+}
+
+.pookie{
+    font-size:clamp(38px,10vw,70px);
+    font-weight:bold;
+    margin-bottom:8px;
+    text-shadow:
+        0 0 15px rgba(255,255,255,.8),
+        0 5px 20px rgba(0,0,0,.2);
+}
+
+.lock{
+    font-size:55px;
+    margin-bottom:10px;
+    animation:lockPulse 2s infinite;
+}
+
+/* Countdown */
+
+.countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin:25px 0;
+}
+
+.time-box{
+    background:rgba(255,255,255,.18);
+    border-radius:18px;
+    padding:15px 5px;
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,.08),
+        0 8px 20px rgba(0,0,0,.15);
+}
+
+.number{
+    display:block;
+    font-size:clamp(27px,7vw,48px);
+    font-weight:bold;
+}
+
+.label{
+    font-size:11px;
+    text-transform:uppercase;
+    opacity:.85;
+}
+
+.wait{
+    font-size:16px;
+    line-height:1.6;
+    margin-top:10px;
+}
+
+/* Birthday unlocked */
+
+.birthday{
+    display:none;
+    animation:appear 1.5s ease;
+}
+
+.birthday h1{
+    font-size:clamp(35px,9vw,65px);
+    margin:15px 0;
+}
+
+.birthday-text{
+    font-size:19px;
+    line-height:1.8;
+}
+
+.gift{
+    font-size:75px;
+    animation:bounce 1.5s infinite;
+}
+
+/* Button */
+
+button{
+    margin-top:25px;
+    padding:14px 28px;
+
+    border:none;
+    border-radius:50px;
+
+    background:white;
+    color:#e84393;
+
+    font-size:17px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+/* Secret */
+
+#secret{
+    display:none;
+    margin-top:25px;
+    font-size:19px;
+    line-height:1.7;
+    animation:appear 1s ease;
+}
+
+/* Footer */
+
+.footer{
+    position:absolute;
+    bottom:12px;
+    left:0;
+    width:100%;
+
+    text-align:center;
+
+    font-size:11px;
+    letter-spacing:1px;
+
+    opacity:.65;
+    z-index:10;
+}
+
+/* Hearts */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+
+    font-size:25px;
+
+    pointer-events:none;
+    z-index:1;
+
+    animation:floatUp linear forwards;
+}
+
+/* Balloons */
+
+.balloon{
+    position:fixed;
+    bottom:-100px;
+
+    font-size:50px;
+
+    pointer-events:none;
+    z-index:2;
+
+    animation:balloonUp linear forwards;
+}
+
+/* Animations */
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+@keyframes balloonUp{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    100%{
+        transform:translateY(-120vh);
+    }
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+@keyframes lockPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+    }
+}
+
+@keyframes appear{
+
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* Mobile */
+
+@media(max-width:500px){
+
+    .card{
+        padding:30px 14px 50px;
+    }
+
+    .countdown{
+        gap:6px;
+    }
+
+    .time-box{
+        padding:13px 3px;
+    }
+
+    .wait{
+        font-size:14px;
+    }
+
+    .birthday-text{
+        font-size:17px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+    <div class="card">
+
+        <!-- LOCKED SCREEN -->
+
+        <div id="locked">
+
+            <div class="top-title">
+                🎁 A Special Gift for Pookie 🎁
+            </div>
+
+            <div class="from">
+                After this time... ⏳<br>
+                From Rishi ❤️
+            </div>
+
+            <div class="lock">
+                🔒
+            </div>
+
+            <div class="pookie">
+                Mimansha ❤️
+            </div>
+
+            <div class="wait">
+                Something special is waiting for you... ✨
+                <br>
+                But you have to wait until the countdown ends.
+            </div>
+
+
+            <!-- COUNTDOWN -->
+
+            <div class="countdown">
+
+                <div class="time-box">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Days</span>
+                </div>
+
+                <div class="time-box">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+
+                <div class="time-box">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Minutes</span>
+                </div>
+
+                <div class="time-box">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">Seconds</span>
+                </div>
+
+            </div>
+
+
+            <p class="wait">
+                🎂 Unlocks on <b>14 September 2026</b> 🎂
+            </p>
+
+        </div>
+
+
+        <!-- UNLOCKED BIRTHDAY -->
+
+        <div class="birthday" id="birthday">
+
+            <div class="gift">
+                🎁🎂🎈
+            </div>
+
+            <h1>
+                🎉 HAPPY BIRTHDAY 🎉
+            </h1>
+
+            <div class="pookie">
+                Mimansha ❤️
+            </div>
+
+            <div class="birthday-text">
+
+                Finally... the wait is over! 🥳
+
+                <br><br>
+
+                Wishing you a day full of happiness,
+                smiles and beautiful memories. ✨
+
+                <br><br>
+
+                May your special day be
+                absolutely amazing! 💖
+
+            </div>
+
+            <button onclick="openGift()">
+                🎁 Open Your Special Gift
+            </button>
+
+            <div id="secret">
+
+                💌 A little message from Rishi ❤️
+
+                <br><br>
+
+                You deserve all the happiness,
+                smiles and beautiful moments in the world. ✨
+
+                <br><br>
+
+                Once again...
+
+                <br>
+
+                🎂 Happy Birthday Mimansha! 🎂
+
+                <br>
+
+                ❤️ Stay Happy Always ❤️
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+        developed by rishiranjan
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/*
+=========================================
+BIRTHDAY DATE
+14 September 2026
+12:00 AM
+India Standard Time
+=========================================
+*/
+
+const birthday =
+new Date("2026-09-14T00:00:00+05:30").getTime();
+
+
+
+/*
+=========================================
+COUNTDOWN
+=========================================
+*/
+
+function updateCountdown(){
+
+    const now =
+    new Date().getTime();
+
+    const distance =
+    birthday - now;
+
+
+    /*
+    If countdown finished
+    */
+
+    if(distance <= 0){
+
+        unlockBirthday();
+
+        clearInterval(timer);
+
+        return;
+    }
+
+
+    const days =
+    Math.floor(
+        distance /
+        (1000 * 60 * 60 * 24)
+    );
+
+
+    const hours =
+    Math.floor(
+        (distance %
+        (1000 * 60 * 60 * 24))
+        /
+        (1000 * 60 * 60)
+    );
+
+
+    const minutes =
+    Math.floor(
+        (distance %
+        (1000 * 60 * 60))
+        /
+        (1000 * 60)
+    );
+
+
+    const seconds =
+    Math.floor(
+        (distance %
+        (1000 * 60))
+        /
+        1000
+    );
+
+
+    document.getElementById("days")
+    .textContent =
+    String(days).padStart(2,"0");
+
+
+    document.getElementById("hours")
+    .textContent =
+    String(hours).padStart(2,"0");
+
+
+    document.getElementById("minutes")
+    .textContent =
+    String(minutes).padStart(2,"0");
+
+
+    document.getElementById("seconds")
+    .textContent =
+    String(seconds).padStart(2,"0");
+
+}
+
+
+
+/*
+=========================================
+UNLOCK BIRTHDAY
+=========================================
+*/
+
+function unlockBirthday(){
+
+    document.getElementById("locked")
+    .style.display="none";
+
+
+    document.getElementById("birthday")
+    .style.display="block";
+
+
+    startCelebration();
+
+}
+
+
+
+/*
+=========================================
+START COUNTDOWN
+=========================================
+*/
+
+updateCountdown();
+
+const timer =
+setInterval(updateCountdown,1000);
+
+
+
+/*
+=========================================
+SECRET GIFT
+=========================================
+*/
+
+function openGift(){
+
+    const secret =
+    document.getElementById("secret");
+
+
+    secret.style.display="block";
+
+
+    startCelebration();
+
+}
+
+
+
+/*
+=========================================
+CREATE HEART
+=========================================
+*/
+
+function createHeart(){
+
+    const heart =
+    document.createElement("div");
+
+
+    heart.className="heart";
+
+
+    const hearts=[
+        "❤️",
+        "💖",
+        "💕",
+        "💗",
+        "💓",
+        "💞"
+    ];
+
+
+    heart.textContent =
+    hearts[
+        Math.floor(
+            Math.random()*hearts.length
+        )
+    ];
+
+
+    heart.style.left =
+    Math.random()*100+"vw";
+
+
+    heart.style.animationDuration =
+    (4 + Math.random()*5)+"s";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(()=>{
+        heart.remove();
+    },9000);
+
+}
+
+
+
+/*
+=========================================
+CREATE BALLOON
+=========================================
+*/
+
+function createBalloon(){
+
+    const balloon =
+    document.createElement("div");
+
+
+    balloon.className="balloon";
+
+
+    const balloons=[
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎉"
+    ];
+
+
+    balloon.textContent =
+    balloons[
+        Math.floor(
+            Math.random()*balloons.length
+        )
+    ];
+
+
+    balloon.style.left =
+    Math.random()*100+"vw";
+
+
+    balloon.style.animationDuration =
+    (5 + Math.random()*5)+"s";
+
+
+    document.body.appendChild(balloon);
+
+
+    setTimeout(()=>{
+        balloon.remove();
+    },10000);
+
+}
+
+
+
+/*
+=========================================
+NORMAL HEART ANIMATION
+=========================================
+*/
+
+setInterval(
+    createHeart,
+    1000
+);
+
+
+
+/*
+=========================================
+BIRTHDAY CELEBRATION
+=========================================
+*/
+
+function startCelebration(){
+
+    for(
+        let i=0;
+        i<30;
+        i++
+    ){
+
+        setTimeout(
+            createHeart,
+            i*100
+        );
+
+    }
+
+
+    for(
+        let i=0;
+        i<20;
+        i++
+    ){
+
+        setTimeout(
+            createBalloon,
+            i*150
+        );
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>
